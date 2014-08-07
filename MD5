@@ -1,4 +1,4 @@
-611fddded890c97d20cfc9d100f4a1e8 *DESCRIPTION
+c855707e2fc157b6e5130aee5f207b6d *DESCRIPTION
 669d209b4e98f6efaf532acc681e8410 *NAMESPACE
 57c87b762d00cfb97ab7eaf8907fbca4 *R/acount.R
 40e16f62979c1c22d4b8e548bf820fe3 *R/datadoc.R
@@ -18,9 +18,9 @@ bd7ae6962f7b87c28ef557d7b94798a5 *R/zzz.R
 aeb8383d0599a0d3b69d2c22ee99cc10 *build/vignette.rds
 8069ef7558b6dc6bd18f2af74912e8e1 *data/HWcases.rda
 39e4daeb85549abd2d5cdbd3a3315d5c *data/whales.genind.rda
-5674c9388172856ad49c204536f6a733 *inst/doc/HWxtest.R
-7c26ccdc81e9988d2cf566e5150bcd46 *inst/doc/HWxtest.Rmd
-0d42057b345ff72fefdbd7501123a1fd *inst/doc/HWxtest.html
+0bb850b672f2357ebe3295a1bc3233be *inst/doc/HWxtest.R
+6500ee3e52bb5c2d9d18f4c136496466 *inst/doc/HWxtest.Rmd
+ced8acc9c7b0a9d1efe964172986ee6d *inst/doc/HWxtest.html
 1b5625cc124ab132358205deed5616ff *man/HWcases.Rd
 0427ae57e1e2b7b077926d4d55bab600 *man/acount.Rd
 0bb7de99da9225522599083216e43616 *man/genepop.to.genind.Rd
@@ -37,10 +37,10 @@ caec1efeb03703c14d4b0a2e42b30f62 *man/p.value.Rd
 e1a621ac400c9a57f19dbb812486901f *man/xcount.Rd
 6c0decc484e9b49ca1f6c52f20506bf5 *man/xcountCutoff.Rd
 0b6b6ec3b68d02b4185936c601028847 *man/xtest.Rd
-6274a6fbeacaf7755f3fc9116363e28b *src/HWmtest.c
+4657a2011dc5363ed1cfd1d29a7040d5 *src/HWmtest.c
 cdf3b9277223ecc2f31268f0546d42f7 *src/HWxcount.c
 23598383650c211dd18d54bded68b9bd *src/HWxtest.c
-7c26ccdc81e9988d2cf566e5150bcd46 *vignettes/HWxtest.Rmd
+6500ee3e52bb5c2d9d18f4c136496466 *vignettes/HWxtest.Rmd
 fcf857c5f98963f740c5c2f95e33ccc9 *vignettes/HWxtest.md
 4222887befd419eab0806da9c5567571 *vignettes/bibHW.txt
 93dfe2c95b934a663ce2a9c20aa58d79 *vignettes/figure/Bmy26counts.png

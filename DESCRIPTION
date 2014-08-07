@@ -1,7 +1,7 @@
 Package: HWxtest
 Type: Package
 Title: Exact Tests for Hardy-Weinberg Proportions
-Version: 1.0.2
+Version: 1.0.3
 Date: 2014-02-22
 Author: Bill Engels <wrengels@wisc.edu>
 Maintainer: Bill Engels <wrengels@wisc.edu>
@@ -13,6 +13,6 @@ Depends: R (>= 2.14)
 Suggests: knitr, knitcitations, adegenet, genetics, parallel
 NeedsCompilation: yes
 License: GPL
-Packaged: 2014-08-01 18:18:03 UTC; WRE
+Packaged: 2014-08-06 18:57:33 UTC; WRE
 Repository: CRAN
-Date/Publication: 2014-08-02 07:29:36
+Date/Publication: 2014-08-07 07:12:43

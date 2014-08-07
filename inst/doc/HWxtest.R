@@ -107,6 +107,9 @@ wtest$P2$Bmy26
 counts <- wtest$P2$Bmy26$genotypes
 hwx.test(counts, detail=0, statName="Chisq", histobins=T, histobounds=c(50, 250), B=1e6)
 
+## ----setcores, eval=FALSE---------------------------------------------------------------------------------------------
+#  options(mc.cores = 8)
+
 ## ----results="asis", echo=FALSE---------------------------------------------------------------------------------------
 bibliography(style=NULL)
 
