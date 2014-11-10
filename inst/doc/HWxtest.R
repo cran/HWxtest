@@ -1,8 +1,8 @@
 ## ----setup, include=FALSE------------------------------------------------
 library(knitr)
-library(knitcitations)
-cleanbib()
-cite_options(max.names = 1,longnamesfirst=F,  bib.style="authoryear", style="markdown", hyperlink = "to.doc", no.print.fields = c("ISSN", "note"))
+library(RefManageR)
+BibOptions(restore.defaults=TRUE)
+BibOptions(check.entries = FALSE, bib.style = "authoryear",cite.style="authortitle", style = "html", max.names=99, hyperlink = "to.bib", no.print.fields = c("ISSN", "note", "url") )
 library(HWxtest)
 library(adegenet)
 figw <- 7
@@ -10,20 +10,19 @@ figh <- 5
 set.seed(60823316) 
 
 ## ----refs, include=FALSE-------------------------------------------------
-bib <- read.bibtex("bibHW.txt")
-engels2009 <- "10.1534/genetics.109.108977"
-levene1949 <- "10.1214/aoms/1177730093"
-haldane1954 <- "10.1007/BF02985085"
-louis1987 <- "10.2307/2531534"
-guo1992 <- "10.2307/2532296"
-ward2014 <- "10.1093/biostatistics/kxt028"
+bib <- ReadBib("bibHW.txt")
+engels2009 <- bib[["engels2009"]]
+levene1949 <- bib[["levene1949"]]
+haldane1954 <- bib[["haldane1954"]]
+louis1987 <- bib[["louis1987"]]
+guo1992 <- bib[["guo1992"]]
+ward2014 <- bib[["ward2014"]]
 rousset1995 <- bib[["rousset1995"]]
 robertson1984 <- bib[["robertson1984"]]
 genepop007 <- bib[["genepop007"]]
-adegenet <- "10.1093/bioinformatics/btn129"
-pegas <- "10.1093/bioinformatics/btp696"
+adegenet <- bib[["adegenet"]]
+pegas <- bib[["pegas"]]
 morin2012 <- bib[["morin2012"]]
-citep(morin2012)
 gail1977 <- bib[["gail1977"]]
 ez1989 <- bib[["ez1989"]]
 olsen2014 <- bib[["olsen2014"]]
@@ -75,10 +74,10 @@ hwx.test(counts2, detail=1, cutoff=2e8)
 ## ----Udataframe-------------------------------------------------------------------------------------------------------
 hwdf(wtest, statName="U")[1:10,]
 
-## ----urchins----------------------------------------------------------------------------------------------------------
-urchin.url <- "http://tinyurl.com/ku4fq7m"
-urchin.data <- genepop.to.genind(urchin.url)
-hwdf(hwx.test(urchin.data))
+## ----urchins, eval=FALSE----------------------------------------------------------------------------------------------
+#  urchin.url <- "http://tinyurl.com/ku4fq7m"
+#  urchin.data <- genepop.to.genind(urchin.url)
+#  hwdf(hwx.test(urchin.data))
 
 ## ----LLR-vs-asymp, fig.width=figh, fig.height=figh--------------------------------------------------------------------
 df <- hwdf(wtest, showAsymptoticX2=T)
@@ -111,5 +110,5 @@ hwx.test(counts, detail=0, statName="Chisq", histobins=T, histobounds=c(50, 250)
 #  options(mc.cores = 8)
 
 ## ----results="asis", echo=FALSE---------------------------------------------------------------------------------------
-bibliography(style=NULL)
+PrintBibliography(bib)
 
