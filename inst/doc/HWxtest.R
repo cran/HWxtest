@@ -4,8 +4,11 @@ library(RefManageR)
 BibOptions(restore.defaults=TRUE)
 BibOptions(check.entries = FALSE, bib.style = "authoryear",cite.style="authortitle", style = "html", max.names=99, hyperlink = "to.bib", no.print.fields = c("ISSN", "note", "url") )
 library(HWxtest)
+version <- packageDescription("HWxtest", fields = "Version")
+doWhales <- TRUE
 library(adegenet)
 figw <- 7
+dfigw <- 10
 figh <- 5
 set.seed(60823316) 
 
@@ -52,26 +55,26 @@ hwx.test(obs, histobins=T)
 ## ----plot2, fig.width=figw, fig.height=figh---------------------------------------------------------------------------
 hwx.test(obs, histobins=T, detail=0, statName="U")
 
-## ----testwhales-------------------------------------------------------------------------------------------------------
-data(whales.genind)
-wtest <- hwx.test(whales.genind)
+## ----testwhales, eval=doWhales----------------------------------------------------------------------------------------
+data(whales.df)
+wtest <- hwx.test(whales.df)
 
-## ----dfwhales---------------------------------------------------------------------------------------------------------
+## ----dfwhales, eval=doWhales------------------------------------------------------------------------------------------
 dfwhales <- hwdf(wtest)
 dfwhales[1:10,]
 
-## ----getcounts--------------------------------------------------------------------------------------------------------
+## ----getcounts, eval=doWhales-----------------------------------------------------------------------------------------
 counts1 <- wtest$P1$Bmys42aK46_R225_K232$genotypes
 counts1
 
-## ----biggerB----------------------------------------------------------------------------------------------------------
+## ----biggerB, eval=doWhales-------------------------------------------------------------------------------------------
 hwx.test(counts1, detail=1, B=1000000)
 
-## ----bigger cutoff----------------------------------------------------------------------------------------------------
+## ----bigger cutoff, eval=doWhales-------------------------------------------------------------------------------------
 counts2 <- wtest$P1$Bmys43Y237_Y377$genotypes
 hwx.test(counts2, detail=1, cutoff=2e8)
 
-## ----Udataframe-------------------------------------------------------------------------------------------------------
+## ----Udataframe, eval=doWhales----------------------------------------------------------------------------------------
 hwdf(wtest, statName="U")[1:10,]
 
 ## ----urchins, eval=FALSE----------------------------------------------------------------------------------------------
@@ -79,36 +82,37 @@ hwdf(wtest, statName="U")[1:10,]
 #  urchin.data <- genepop.to.genind(urchin.url)
 #  hwdf(hwx.test(urchin.data))
 
-## ----LLR-vs-asymp, fig.width=figh, fig.height=figh--------------------------------------------------------------------
+## ----LLR-vs-asymp, fig.height=figh, fig.width=dfigw, eval=doWhales----------------------------------------------------
 df <- hwdf(wtest, showAsymptoticX2=T)
 pLLR <- df[[1]]
 pAsy <- df[[10]]
+par(mfcol=c(1,2))
 plot(pLLR, pAsy, xlab="True P value", ylab = "Asymototic approximation")
-lines(c(0,1), c(0,1))
-
-## ----zoom, fig.width=figh, fig.height=figh----------------------------------------------------------------------------
+abline(0,1)
 lim <- c(0,.2)
-plot(pLLR, pAsy, xlim=lim, ylim=lim, xlab="True P value", ylab = "Asymototic approximation")
-lines(c(0,1), c(0,1))
+plot(pLLR, pAsy, xlim=lim, ylim=lim, xlab="True P value", ylab="")
+abline(0,1)
 
-## ----useX2, fig.width=figh, fig.height=figh---------------------------------------------------------------------------
+## ----useX2, fig.height=figh, fig.width=dfigw, eval=doWhales-----------------------------------------------------------
 dfx <- hwdf(wtest, statName="Chisq")
 pX2 <- dfx[[1]]
+par(mfcol=c(1,2))
 plot(pX2, pAsy, xlab="True P value", ylab = "Asymototic approximation")
-lines(c(0,1), c(0,1))
-plot(pX2, pAsy, xlim=lim, ylim=lim, xlab="True P value", ylab = "Asymototic approximation")
-lines(c(0,1), c(0,1))
+abline(0,1)
+plot(pX2, pAsy, xlim=lim, ylim=lim, xlab="True P value", ylab = "")
+abline(0,1)
 
-## ----Bmy26------------------------------------------------------------------------------------------------------------
+## ----Bmy26, eval=doWhales---------------------------------------------------------------------------------------------
 wtest$P2$Bmy26
 
-## ----Bmy26counts, fig.width=figw, fig.height=figh---------------------------------------------------------------------
+## ----Bmy26counts, fig.width=figw, fig.height=figh, eval=doWhales------------------------------------------------------
 counts <- wtest$P2$Bmy26$genotypes
 hwx.test(counts, detail=0, statName="Chisq", histobins=T, histobounds=c(50, 250), B=1e6)
 
 ## ----setcores, eval=FALSE---------------------------------------------------------------------------------------------
 #  options(mc.cores = 8)
 
-## ----results="asis", echo=FALSE---------------------------------------------------------------------------------------
-PrintBibliography(bib)
+## ----results="asis", echo=FALSE, eval=TRUE----------------------------------------------------------------------------
+NoCite(bib, "*")
+#RefManageR::PrintBibliography(bib)
 
