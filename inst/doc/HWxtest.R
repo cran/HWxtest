@@ -2,11 +2,12 @@
 library(knitr)
 library(RefManageR)
 BibOptions(restore.defaults=TRUE)
-BibOptions(check.entries = FALSE, bib.style = "authoryear",cite.style="authortitle", style = "html", max.names=99, hyperlink = "to.bib", no.print.fields = c("ISSN", "note", "url") )
+BibOptions(check.entries = FALSE, bib.style = "authortitle",cite.style="authoryear", style = "html", max.names=99, hyperlink = "to.bib", no.print.fields = c("ISSN", "note", "url") )
+# setting bib.style to 'authoryear' is what caused problems in RefManageR v. 0.10.5
 library(HWxtest)
 version <- packageDescription("HWxtest", fields = "Version")
 doWhales <- TRUE
-library(adegenet)
+adegenet.loaded <- library(adegenet, logical.return=TRUE)
 figw <- 7
 dfigw <- 10
 figh <- 5
@@ -113,6 +114,6 @@ hwx.test(counts, detail=0, statName="Chisq", histobins=T, histobounds=c(50, 250)
 #  options(mc.cores = 8)
 
 ## ----results="asis", echo=FALSE, eval=TRUE----------------------------------------------------------------------------
-NoCite(bib, "*")
-#RefManageR::PrintBibliography(bib)
+#NoCite(bib, "*")
+RefManageR::PrintBibliography(bib)
 
